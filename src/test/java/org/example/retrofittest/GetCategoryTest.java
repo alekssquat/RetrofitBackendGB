@@ -1,6 +1,12 @@
 package org.example.retrofittest;
 
+import db.dao.CategoriesMapper;
+import lesson6.Mybatis;
 import lombok.SneakyThrows;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.retrofit.DTO.GetCategoryResponse;
 import org.example.retrofit.restapi.CategoryService;
 import org.example.retrofit.utils.RetrofitUtils;
@@ -15,8 +21,11 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class GetCategoryTest {
     static CategoryService categoryService;
 
+
     @BeforeAll
-    static void beforeAll(){categoryService = RetrofitUtils.getRetrofit().create(CategoryService.class);}
+    static void beforeAll(){
+        categoryService = RetrofitUtils.getRetrofit().create(CategoryService.class);
+    }
 
     @SneakyThrows
     @Test

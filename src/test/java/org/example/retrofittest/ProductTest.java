@@ -2,8 +2,16 @@ package org.example.retrofittest;
 
 
 import com.github.javafaker.Faker;
+import db.dao.CategoriesMapper;
+import db.dao.ProductsMapper;
+import db.model.Products;
+import lesson6.Mybatis;
 import lombok.SneakyThrows;
 import okhttp3.ResponseBody;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.retrofit.DTO.Product;
 import org.example.retrofit.restapi.ProductService;
 import org.example.retrofit.utils.RetrofitUtils;
@@ -11,6 +19,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.*;
 import retrofit2.Response;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -48,6 +57,9 @@ public class ProductTest {
         assertThat(response.isSuccessful(), CoreMatchers.is(true));
         System.out.println("Новый продукт: "+id+" "+product.getTitle());
     }
+
+
+
 
 
     @Test
@@ -99,4 +111,6 @@ public class ProductTest {
 
         System.out.println("Удаленный продукт: "+id+" "+product.getTitle());
     }
+
+
 }
